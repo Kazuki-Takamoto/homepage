@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>髙本公認会計士事務所</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1c3557;
+      --navy-light: #264a78;
+      --gold: #b8975a;
+      --text: #333;
+      --text-light: #666;
+      --bg-light: #f7f8fa;
+      --white: #fff;
+      --border: #e0e4ea;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      color: var(--text);
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 64px;
+    }
+
+    .logo {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: 0.05em;
+      text-decoration: none;
+    }
+
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      margin-left: 32px;
+      font-size: 14px;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--navy); }
+
+    /* ===== HERO ===== */
+    #hero {
+      margin-top: 64px;
+      background: var(--navy);
+      color: var(--white);
+      padding: 100px 40px;
+      text-align: center;
+    }
+
+    #hero .en {
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    #hero h1 {
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+
+    #hero p {
+      font-size: 15px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.8);
+      max-width: 520px;
+      margin: 0 auto 40px;
+      line-height: 2;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--white);
+      padding: 14px 40px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      transition: opacity 0.2s;
+    }
+
+    .btn:hover { opacity: 0.85; }
+
+    /* ===== SECTION COMMON ===== */
+    section { padding: 80px 40px; }
+
+    .section-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 48px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--navy);
+    }
+
+    /* ===== SERVICES ===== */
+    #services { background: var(--bg-light); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 32px 28px;
+    }
+
+    .service-icon {
+      width: 40px;
+      height: 3px;
+      background: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .service-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      font-size: 14px;
+      color: var(--text-light);
+      line-height: 1.8;
+    }
+
+    /* ===== ABOUT ===== */
+    #about { background: var(--white); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .about-text p {
+      font-size: 14px;
+      color: var(--text-light);
+      line-height: 2;
+      margin-bottom: 16px;
+    }
+
+    .profile-box {
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      padding: 32px;
+    }
+
+    .profile-box h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .profile-box .title {
+      font-size: 13px;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .profile-box dl {
+      font-size: 13px;
+    }
+
+    .profile-box dt {
+      color: var(--text-light);
+      margin-top: 12px;
+      font-weight: 500;
+    }
+
+    .profile-box dd {
+      color: var(--text);
+      margin-left: 0;
+    }
+
+    /* ===== CAREER ===== */
+    .career-list {
+      margin-top: 48px;
+      border-top: 1px solid var(--border);
+      padding-top: 40px;
+    }
+
+    .career-list h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 24px;
+    }
+
+    .career-item {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 24px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .career-item:last-child { border-bottom: none; }
+
+    .career-meta {
+      padding-top: 2px;
+    }
+
+    .career-org {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .career-period {
+      font-size: 12px;
+      color: var(--gold);
+      letter-spacing: 0.03em;
+    }
+
+    .career-detail ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .career-detail ul li {
+      font-size: 14px;
+      color: var(--text-light);
+      padding: 3px 0;
+      padding-left: 14px;
+      position: relative;
+    }
+
+    .career-detail ul li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+    }
+
+    @media (max-width: 680px) {
+      .career-item { grid-template-columns: 1fr; gap: 8px; }
+    }
+
+    /* ===== OFFICE INFO ===== */
+    #info { background: var(--bg-light); }
+
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    .info-table tr {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .info-table th {
+      width: 180px;
+      text-align: left;
+      padding: 20px 16px 20px 0;
+      color: var(--text-light);
+      font-weight: 500;
+      vertical-align: top;
+    }
+
+    .info-table td {
+      padding: 20px 0;
+      color: var(--text);
+    }
+
+    /* ===== CONTACT ===== */
+    #contact { background: var(--navy); color: var(--white); text-align: center; }
+
+    #contact .section-title {
+      color: var(--white);
+      border-color: var(--gold);
+    }
+
+    #contact p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 32px;
+    }
+
+    .contact-mail {
+      display: inline-block;
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      border-bottom: 1px solid var(--gold);
+      padding-bottom: 4px;
+      margin-bottom: 40px;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #111;
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      padding: 24px 40px;
+      font-size: 12px;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 680px) {
+      header { padding: 0 20px; }
+      nav { display: none; }
+      #hero { padding: 60px 24px; }
+      #hero h1 { font-size: 22px; }
+      section { padding: 60px 24px; }
+      .about-grid { grid-template-columns: 1fr; }
+      .info-table th { width: 110px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a class="logo" href="#hero">髙本公認会計士事務所</a>
+    <nav>
+      <a href="#services">業務内容</a>
+      <a href="#about">事務所概要</a>
+      <a href="#info">アクセス</a>
+      <a href="#contact">お問い合わせ</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section id="hero">
+    <p class="en">Takamoto CPA &amp; Tax Office</p>
+    <h1>会計と税務の"ととのい"を<br>サポートします。</h1>
+    <p>
+      公認会計士・税理士として、正確な知識と誠実な対話で<br>
+      個人事業主から法人まで、税務・会計をトータルサポートします。<br>
+      リモートメインで全国対応。
+    </p>
+    <a href="#contact" class="btn">お問い合わせ</a>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-inner">
+      <p class="section-label">Services</p>
+      <h2 class="section-title">業務内容</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon"></div>
+          <h3>決算支援</h3>
+          <p>月次・年次決算の作成支援を行い、正確な財務情報の把握をサポートします。</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"></div>
+          <h3>内部統制支援</h3>
+          <p>J-SOX対応を含む内部統制の整備・評価・改善を支援します。</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"></div>
+          <h3>会計監査補助</h3>
+          <p>公認会計士として、財務諸表の適正性検証における監査手続の補助業務を行います。</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"></div>
+          <h3>税務顧問</h3>
+          <p>日々の税務相談から節税対策まで、お客様の手元に残るお金を最大化することを目的にサポートします。個人・法人どちらも対応可能です。</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"></div>
+          <h3>税務申告</h3>
+          <p>個人の確定申告から法人の決算申告まで対応します。正確・適切な申告により、余計な税負担やペナルティを防ぎます。</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"></div>
+          <h3>記帳代行</h3>
+          <p>日々の記帳をお任せいただくことで、経営者が本業に集中できる環境をつくります。正確な数字の把握が、経営判断の質を高めます。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <p class="section-label">About</p>
+      <h2 class="section-title">事務所概要</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            髙本公認会計士事務所は、公認会計士・税理士の資格を持つ代表・髙本和希が運営する会計事務所です。
+            リモートメインの体制で、全国どこからでもサービスをご利用いただけます。
+          </p>
+          <p>
+            監査法人および税理士法人での実務経験を活かし、個人事業主から上場企業まで対応。
+            会計士として培った財務・内部統制の専門知識と、税理士としての税務サポートを組み合わせ、
+            会計と税務の両面からお客様の経営を支えます。
+          </p>
+          <p>
+            難しい言葉を使わず、わかりやすく誠実にお伝えすることを大切にしています。
+            まずはお気軽にご相談ください。
+          </p>
+        </div>
+        <div class="profile-box">
+          <h3>髙本 和希</h3>
+          <p class="title">公認会計士 / 税理士</p>
+          <dl>
+            <dt>保有資格</dt>
+            <dd>公認会計士、税理士</dd>
+            <dt>公認会計士登録番号</dt>
+            <dd>42338</dd>
+            <dt>税理士登録番号</dt>
+            <dd>158246</dd>
+            <dt>対応エリア</dt>
+            <dd>全国対応（リモートメイン）</dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="career-list">
+        <h3>代表者 経歴</h3>
+        <div class="career-item">
+          <div class="career-meta">
+            <p class="career-org">髙本和希税理士事務所</p>
+            <p class="career-period">2025年12月 〜 現在</p>
+          </div>
+          <div class="career-detail">
+            <ul>
+              <li>税務顧問（個人、法人）</li>
+              <li>税理士法人からの業務受託（個人、法人）</li>
+              <li>記帳代行</li>
+            </ul>
+          </div>
+        </div>
+        <div class="career-item">
+          <div class="career-meta">
+            <p class="career-org">髙本公認会計士事務所</p>
+            <p class="career-period">2025年10月 〜 現在</p>
+          </div>
+          <div class="career-detail">
+            <ul>
+              <li>決算支援</li>
+              <li>会計不正調査対応における会社サポート業務</li>
+            </ul>
+          </div>
+        </div>
+        <div class="career-item">
+          <div class="career-meta">
+            <p class="career-org">EY新日本有限責任監査法人</p>
+            <p class="career-period">2019年2月 〜 2025年9月</p>
+          </div>
+          <div class="career-detail">
+            <ul>
+              <li>監査業務</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- INFO -->
+  <section id="info">
+    <div class="section-inner">
+      <p class="section-label">Access</p>
+      <h2 class="section-title">アクセス</h2>
+      <table class="info-table">
+        <tr>
+          <th>事務所名</th>
+          <td>髙本公認会計士事務所</td>
+        </tr>
+        <tr>
+          <th>代表者</th>
+          <td>髙本 和希（公認会計士・税理士）</td>
+        </tr>
+        <tr>
+          <th>公認会計士登録番号</th>
+          <td>42338</td>
+        </tr>
+        <tr>
+          <th>税理士登録番号</th>
+          <td>158246</td>
+        </tr>
+        <tr>
+          <th>対応エリア</th>
+          <td>全国対応（完全リモート）</td>
+        </tr>
+        <tr>
+          <th>お問い合わせ先</th>
+          <td><a href="https://www.chatwork.com/KazukiTakamoto" target="_blank" rel="noopener">Chatwork（KazukiTakamoto）</a></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-inner">
+      <p class="section-label">Contact</p>
+      <h2 class="section-title">お問い合わせ</h2>
+      <p>ご相談・お見積りは無料です。<br>「税金のこと、どこに相談すればいいかわからない」<br>そんな方もお気軽にどうぞ。</p>
+      <a class="contact-mail" href="https://www.chatwork.com/KazukiTakamoto" target="_blank" rel="noopener">
+        Chatwork（KazukiTakamoto）
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 髙本公認会計士事務所 All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>
