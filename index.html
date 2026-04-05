@@ -1,565 +1,320 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>髙本公認会計士事務所</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --navy: #1c3557;
-      --navy-light: #264a78;
-      --gold: #b8975a;
-      --text: #333;
-      --text-light: #666;
-      --bg-light: #f7f8fa;
-      --white: #fff;
-      --border: #e0e4ea;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Noto Sans JP', sans-serif;
-      color: var(--text);
-      line-height: 1.8;
-      font-size: 15px;
-    }
-
-    /* ===== HEADER ===== */
-    header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      background: var(--white);
-      border-bottom: 1px solid var(--border);
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 40px;
-      height: 64px;
-    }
-
-    .logo {
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--navy);
-      letter-spacing: 0.05em;
-      text-decoration: none;
-    }
-
-    nav a {
-      color: var(--text);
-      text-decoration: none;
-      margin-left: 32px;
-      font-size: 14px;
-      font-weight: 400;
-      transition: color 0.2s;
-    }
-
-    nav a:hover { color: var(--navy); }
-
-    /* ===== HERO ===== */
-    #hero {
-      margin-top: 64px;
-      background: var(--navy);
-      color: var(--white);
-      padding: 100px 40px;
-      text-align: center;
-    }
-
-    #hero .en {
-      font-size: 12px;
-      letter-spacing: 0.2em;
-      color: var(--gold);
-      margin-bottom: 20px;
-      text-transform: uppercase;
-    }
-
-    #hero h1 {
-      font-size: 32px;
-      font-weight: 700;
-      line-height: 1.5;
-      margin-bottom: 24px;
-    }
-
-    #hero p {
-      font-size: 15px;
-      font-weight: 300;
-      color: rgba(255,255,255,0.8);
-      max-width: 520px;
-      margin: 0 auto 40px;
-      line-height: 2;
-    }
-
-    .btn {
-      display: inline-block;
-      background: var(--gold);
-      color: var(--white);
-      padding: 14px 40px;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: 0.05em;
-      transition: opacity 0.2s;
-    }
-
-    .btn:hover { opacity: 0.85; }
-
-    /* ===== SECTION COMMON ===== */
-    section { padding: 80px 40px; }
-
-    .section-inner {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .section-label {
-      font-size: 11px;
-      letter-spacing: 0.2em;
-      color: var(--gold);
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-
-    .section-title {
-      font-size: 24px;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 48px;
-      padding-bottom: 16px;
-      border-bottom: 2px solid var(--navy);
-    }
-
-    /* ===== SERVICES ===== */
-    #services { background: var(--bg-light); }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
-    }
-
-    .service-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      padding: 32px 28px;
-    }
-
-    .service-icon {
-      width: 40px;
-      height: 3px;
-      background: var(--gold);
-      margin-bottom: 20px;
-    }
-
-    .service-card h3 {
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 12px;
-    }
-
-    .service-card p {
-      font-size: 14px;
-      color: var(--text-light);
-      line-height: 1.8;
-    }
-
-    /* ===== ABOUT ===== */
-    #about { background: var(--white); }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      align-items: start;
-    }
-
-    .about-text p {
-      font-size: 14px;
-      color: var(--text-light);
-      line-height: 2;
-      margin-bottom: 16px;
-    }
-
-    .profile-box {
-      background: var(--bg-light);
-      border: 1px solid var(--border);
-      padding: 32px;
-    }
-
-    .profile-box h3 {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 4px;
-    }
-
-    .profile-box .title {
-      font-size: 13px;
-      color: var(--gold);
-      margin-bottom: 20px;
-    }
-
-    .profile-box dl {
-      font-size: 13px;
-    }
-
-    .profile-box dt {
-      color: var(--text-light);
-      margin-top: 12px;
-      font-weight: 500;
-    }
-
-    .profile-box dd {
-      color: var(--text);
-      margin-left: 0;
-    }
-
-    /* ===== CAREER ===== */
-    .career-list {
-      margin-top: 48px;
-      border-top: 1px solid var(--border);
-      padding-top: 40px;
-    }
-
-    .career-list h3 {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 24px;
-    }
-
-    .career-item {
-      display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: 24px;
-      padding: 24px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .career-item:last-child { border-bottom: none; }
-
-    .career-meta {
-      padding-top: 2px;
-    }
-
-    .career-org {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 4px;
-    }
-
-    .career-period {
-      font-size: 12px;
-      color: var(--gold);
-      letter-spacing: 0.03em;
-    }
-
-    .career-detail ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .career-detail ul li {
-      font-size: 14px;
-      color: var(--text-light);
-      padding: 3px 0;
-      padding-left: 14px;
-      position: relative;
-    }
-
-    .career-detail ul li::before {
-      content: '–';
-      position: absolute;
-      left: 0;
-      color: var(--gold);
-    }
-
-    @media (max-width: 680px) {
-      .career-item { grid-template-columns: 1fr; gap: 8px; }
-    }
-
-    /* ===== OFFICE INFO ===== */
-    #info { background: var(--bg-light); }
-
-    .info-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 14px;
-    }
-
-    .info-table tr {
-      border-bottom: 1px solid var(--border);
-    }
-
-    .info-table th {
-      width: 180px;
-      text-align: left;
-      padding: 20px 16px 20px 0;
-      color: var(--text-light);
-      font-weight: 500;
-      vertical-align: top;
-    }
-
-    .info-table td {
-      padding: 20px 0;
-      color: var(--text);
-    }
-
-    /* ===== CONTACT ===== */
-    #contact { background: var(--navy); color: var(--white); text-align: center; }
-
-    #contact .section-title {
-      color: var(--white);
-      border-color: var(--gold);
-    }
-
-    #contact p {
-      font-size: 14px;
-      color: rgba(255,255,255,0.75);
-      margin-bottom: 32px;
-    }
-
-    .contact-mail {
-      display: inline-block;
-      font-size: 18px;
-      font-weight: 500;
-      color: var(--gold);
-      text-decoration: none;
-      letter-spacing: 0.02em;
-      border-bottom: 1px solid var(--gold);
-      padding-bottom: 4px;
-      margin-bottom: 40px;
-    }
-
-    /* ===== FOOTER ===== */
-    footer {
-      background: #111;
-      color: rgba(255,255,255,0.4);
-      text-align: center;
-      padding: 24px 40px;
-      font-size: 12px;
-    }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 680px) {
-      header { padding: 0 20px; }
-      nav { display: none; }
-      #hero { padding: 60px 24px; }
-      #hero h1 { font-size: 22px; }
-      section { padding: 60px 24px; }
-      .about-grid { grid-template-columns: 1fr; }
-      .info-table th { width: 110px; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>髙本会計事務所 | Takamoto CPA &amp; Tax Office</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500;700;900&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            navy: '#1c3557',
+                            dark: '#12243d',
+                            gold: '#b8975a',
+                            lightgold: '#dfd0b8',
+                            surface: '#fbfaf8',
+                            border: '#e2e8f0'
+                        }
+                    },
+                    fontFamily: {
+                        jp: ['"Noto Sans JP"', 'sans-serif'],
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Outfit"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::selection { background-color: #b8975a; color: white; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #1c3557; }
+        ::-webkit-scrollbar-thumb:hover { background: #b8975a; }
+        .timeline-container::before { content: ''; position: absolute; left: 17px; top: 10px; bottom: 0; width: 1px; background-color: #b8975a; opacity: 0.3; }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fade-up { animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        table.corporate-table { border-collapse: collapse; }
+        table.corporate-table th, table.corporate-table td { border: 1px solid #e2e8f0; }
+    </style>
 </head>
-<body>
+<body class="font-jp text-gray-800 antialiased bg-white">
 
   <!-- HEADER -->
-  <header>
-    <a class="logo" href="#hero">髙本公認会計士事務所</a>
-    <nav>
-      <a href="#services">業務内容</a>
-      <a href="#about">事務所概要</a>
-      <a href="#info">アクセス</a>
-      <a href="#contact">お問い合わせ</a>
-    </nav>
+  <header class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#" class="group flex flex-col justify-center">
+        <span class="font-sans font-semibold tracking-wider text-xl text-brand-navy flex items-center gap-2">
+          <i class="ph-fill ph-calculator text-brand-gold text-2xl"></i> Takamoto Accounting Office
+        </span>
+        <span class="text-[10px] tracking-widest text-gray-500 font-jp uppercase mt-0.5 group-hover:text-brand-gold transition-colors">公認会計士 / 税理士事務所</span>
+      </a>
+      <nav class="hidden md:flex space-x-8 items-center">
+        <a href="#services" class="text-sm font-sans tracking-widest font-medium text-brand-navy hover:text-brand-gold transition-colors">業務内容</a>
+        <a href="#about" class="text-sm font-sans tracking-widest font-medium text-brand-navy hover:text-brand-gold transition-colors">事務所概要</a>
+        <a href="#career" class="text-sm font-sans tracking-widest font-medium text-brand-navy hover:text-brand-gold transition-colors">経歴</a>
+        <a href="#firm" class="text-sm font-sans tracking-widest font-medium text-brand-navy hover:text-brand-gold transition-colors">アクセス</a>
+        <a href="#contact" class="px-6 py-2.5 ml-4 border border-brand-navy text-brand-navy text-sm font-jp font-medium hover:bg-brand-navy hover:text-white transition-all duration-300 rounded-[2px] flex items-center gap-2">お問い合わせ <i class="ph ph-arrow-right"></i></a>
+      </nav>
+      <button class="md:hidden text-2xl text-brand-navy"><i class="ph ph-list"></i></button>
+    </div>
   </header>
 
-  <!-- HERO -->
-  <section id="hero">
-    <p class="en">Takamoto CPA &amp; Tax Office</p>
-    <h1>会計と税務の"ととのい"を<br>サポートします。</h1>
-    <p>
-      公認会計士・税理士として、正確な知識と誠実な対話で<br>
-      個人事業主から法人まで、税務・会計をトータルサポートします。<br>
-      リモートメインで全国対応。
-    </p>
-    <a href="#contact" class="btn">お問い合わせ</a>
-  </section>
-
-  <!-- SERVICES -->
-  <section id="services">
-    <div class="section-inner">
-      <p class="section-label">Services</p>
-      <h2 class="section-title">業務内容</h2>
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="service-icon"></div>
-          <h3>決算支援</h3>
-          <p>月次・年次決算の作成支援を行い、正確な財務情報の把握をサポートします。</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon"></div>
-          <h3>内部統制支援</h3>
-          <p>J-SOX対応を含む内部統制の整備・評価・改善を支援します。</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon"></div>
-          <h3>会計監査補助</h3>
-          <p>公認会計士として、財務諸表の適正性検証における監査手続の補助業務を行います。</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon"></div>
-          <h3>税務顧問</h3>
-          <p>日々の税務相談から節税対策まで、お客様の手元に残るお金を最大化することを目的にサポートします。個人・法人どちらも対応可能です。</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon"></div>
-          <h3>税務申告</h3>
-          <p>個人の確定申告から法人の決算申告まで対応します。正確・適切な申告により、余計な税負担やペナルティを防ぎます。</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon"></div>
-          <h3>記帳代行</h3>
-          <p>日々の記帳をお任せいただくことで、経営者が本業に集中できる環境をつくります。正確な数字の把握が、経営判断の質を高めます。</p>
+  <main>
+    <!-- HERO -->
+    <section class="relative min-h-[90vh] flex items-center mt-20 pt-10 pb-20 overflow-hidden">
+      <div class="absolute inset-0 bg-brand-navy z-0"></div>
+      <div class="absolute right-0 top-0 w-1/3 h-full border-l border-white/5 z-0 hidden lg:block"></div>
+      <div class="relative z-10 max-w-7xl mx-auto px-6 w-full">
+        <p class="font-sans text-brand-gold tracking-[0.3em] text-sm uppercase mb-6 flex items-center gap-4 opacity-0 animate-fade-up">
+          <span class="w-12 h-[1px] bg-brand-gold"></span>Takamoto CPA &amp; Tax Office
+        </p>
+        <h1 class="text-4xl md:text-6xl font-bold font-jp leading-[1.3] tracking-tight mb-8 text-white opacity-0 animate-fade-up delay-100">
+          会計と税務の<span class="text-brand-gold">"ととのい"</span>を<br>サポートします。
+        </h1>
+        <p class="text-gray-300 text-base md:text-lg font-light leading-loose max-w-xl mb-12 opacity-0 animate-fade-up delay-200">
+          公認会計士・税理士として、正確な知識と誠実な対話で<br>個人事業主から法人まで、税務・会計をトータルサポートします。<br>リモートメインで全国対応。
+        </p>
+        <div class="opacity-0 animate-fade-up delay-300">
+          <a href="#contact" class="bg-brand-gold text-brand-navy font-bold font-jp px-8 py-4 rounded-[2px] transition-all hover:bg-white inline-flex items-center gap-3 group shadow-[0_0_40px_rgba(184,151,90,0.2)]">
+            お問い合わせ（無料） <i class="ph ph-arrow-right group-hover:translate-x-1 transition-transform"></i>
+          </a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="section-inner">
-      <p class="section-label">About</p>
-      <h2 class="section-title">事務所概要</h2>
-      <div class="about-grid">
-        <div class="about-text">
-          <p>
-            髙本公認会計士事務所は、公認会計士・税理士の資格を持つ代表・髙本和希が運営する会計事務所です。
-            リモートメインの体制で、全国どこからでもサービスをご利用いただけます。
-          </p>
-          <p>
-            監査法人および税理士法人での実務経験を活かし、個人事業主から上場企業まで対応。
-            会計士として培った財務・内部統制の専門知識と、税理士としての税務サポートを組み合わせ、
-            会計と税務の両面からお客様の経営を支えます。
-          </p>
-          <p>
-            難しい言葉を使わず、わかりやすく誠実にお伝えすることを大切にしています。
-            まずはお気軽にご相談ください。
-          </p>
+    <!-- SERVICES -->
+    <section id="services" class="py-32 bg-brand-surface">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="mb-16">
+          <h2 class="font-serif text-5xl text-brand-navy mb-2">Services</h2>
+          <h3 class="font-jp text-sm tracking-widest text-gray-500 uppercase">業務内容</h3>
         </div>
-        <div class="profile-box">
-          <h3>髙本 和希</h3>
-          <p class="title">公認会計士 / 税理士</p>
-          <dl>
-            <dt>保有資格</dt>
-            <dd>公認会計士、税理士</dd>
-            <dt>公認会計士登録番号</dt>
-            <dd>42338</dd>
-            <dt>税理士登録番号</dt>
-            <dd>158246</dd>
-            <dt>対応エリア</dt>
-            <dd>全国対応（リモートメイン）</dd>
-          </dl>
-        </div>
-      </div>
-
-      <div class="career-list">
-        <h3>代表者 経歴</h3>
-        <div class="career-item">
-          <div class="career-meta">
-            <p class="career-org">京都公務員＆IT会計専門学校</p>
-            <p class="career-period">2017年4月 〜 2019年3月</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="group bg-white p-10 border border-brand-border hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden">
+            <div class="w-0 h-1 bg-brand-gold absolute bottom-0 left-0 transition-all duration-500 group-hover:w-full"></div>
+            <i class="ph ph-chart-bar text-4xl text-brand-navy mb-6 group-hover:text-brand-gold transition-colors"></i>
+            <h4 class="font-jp font-bold text-xl text-brand-navy mb-4">決算支援</h4>
+            <p class="font-jp text-sm text-gray-600 leading-relaxed">月次・年次決算の作成支援を行い、正確な財務情報の把握をサポートします。</p>
           </div>
-          <div class="career-detail">
-            <ul>
+          <div class="group bg-white p-10 border border-brand-border hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden">
+            <div class="w-0 h-1 bg-brand-gold absolute bottom-0 left-0 transition-all duration-500 group-hover:w-full"></div>
+            <i class="ph ph-shield-check text-4xl text-brand-navy mb-6 group-hover:text-brand-gold transition-colors"></i>
+            <h4 class="font-jp font-bold text-xl text-brand-navy mb-4">内部統制支援</h4>
+            <p class="font-jp text-sm text-gray-600 leading-relaxed">J-SOX対応を含む内部統制の整備・評価・改善を支援します。</p>
+          </div>
+          <div class="group bg-white p-10 border border-brand-border hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden">
+            <div class="w-0 h-1 bg-brand-gold absolute bottom-0 left-0 transition-all duration-500 group-hover:w-full"></div>
+            <i class="ph ph-magnifying-glass text-4xl text-brand-navy mb-6 group-hover:text-brand-gold transition-colors"></i>
+            <h4 class="font-jp font-bold text-xl text-brand-navy mb-4">会計監査補助</h4>
+            <p class="font-jp text-sm text-gray-600 leading-relaxed">公認会計士として、財務諸表の適正性検証における監査手続の補助業務を行います。</p>
+          </div>
+          <div class="group bg-white p-10 border border-brand-border hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden">
+            <div class="w-0 h-1 bg-brand-gold absolute bottom-0 left-0 transition-all duration-500 group-hover:w-full"></div>
+            <i class="ph ph-handshake text-4xl text-brand-navy mb-6 group-hover:text-brand-gold transition-colors"></i>
+            <h4 class="font-jp font-bold text-xl text-brand-navy mb-4">税務顧問</h4>
+            <p class="font-jp text-sm text-gray-600 leading-relaxed">日々の税務相談から節税対策まで、お客様の手元に残るお金を最大化することを目的にサポートします。個人・法人どちらも対応可能です。</p>
+          </div>
+          <div class="group bg-white p-10 border border-brand-border hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden">
+            <div class="w-0 h-1 bg-brand-gold absolute bottom-0 left-0 transition-all duration-500 group-hover:w-full"></div>
+            <i class="ph ph-file-text text-4xl text-brand-navy mb-6 group-hover:text-brand-gold transition-colors"></i>
+            <h4 class="font-jp font-bold text-xl text-brand-navy mb-4">税務申告</h4>
+            <p class="font-jp text-sm text-gray-600 leading-relaxed">個人の確定申告から法人の決算申告まで対応します。正確・適切な申告により、余計な税負担やペナルティを防ぎます。</p>
+          </div>
+          <div class="group bg-white p-10 border border-brand-border hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden">
+            <div class="w-0 h-1 bg-brand-gold absolute bottom-0 left-0 transition-all duration-500 group-hover:w-full"></div>
+            <i class="ph ph-notebook text-4xl text-brand-navy mb-6 group-hover:text-brand-gold transition-colors"></i>
+            <h4 class="font-jp font-bold text-xl text-brand-navy mb-4">記帳代行</h4>
+            <p class="font-jp text-sm text-gray-600 leading-relaxed">日々の記帳をお任せいただくことで、経営者が本業に集中できる環境をつくります。正確な数字の把握が、経営判断の質を高めます。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-32 bg-white">
+      <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+        <div class="lg:col-span-7 pr-0 lg:pr-12">
+          <h2 class="font-serif text-5xl text-brand-navy mb-2">About</h2>
+          <h3 class="font-jp text-sm tracking-widest text-gray-500 uppercase mb-10">事務所概要</h3>
+          <div class="space-y-6 text-gray-600 font-jp leading-loose text-sm md:text-base">
+            <p>髙本会計事務所は、公認会計士・税理士の資格を持つ代表・髙本和希が運営する会計事務所です。リモートメインの体制で、全国どこからでもサービスをご利用いただけます。</p>
+            <p>監査法人および税理士法人での実務経験を活かし、個人事業主から上場企業まで対応。会計士として培った財務・内部統制の専門知識と、税理士としての税務サポートを組み合わせ、会計と税務の両面からお客様の経営を支えます。</p>
+            <p>難しい言葉を使わず、わかりやすく誠実にお伝えすることを大切にしています。まずはお気軽にご相談ください。</p>
+          </div>
+          <div class="mt-12">
+            <p class="font-jp font-bold text-xl text-brand-navy tracking-widest">髙本 和希</p>
+            <p class="font-sans text-xs tracking-widest text-brand-gold uppercase mt-1">Kazuki Takamoto</p>
+          </div>
+        </div>
+        <div class="lg:col-span-5 relative">
+          <div class="absolute -right-6 -bottom-6 w-full h-full bg-brand-lightgold z-0 hidden md:block"></div>
+          <div class="bg-brand-navy relative z-10 p-8 md:p-12 text-white shadow-2xl">
+            <div class="mb-8 border-b border-white/20 pb-6">
+              <p class="text-brand-gold font-sans tracking-widest text-sm mb-2 uppercase">Profile</p>
+              <h5 class="text-2xl font-jp font-bold mb-1">髙本 和希</h5>
+              <p class="font-jp text-sm text-brand-gold mt-1">公認会計士 / 税理士</p>
+              <p class="text-gray-300 font-jp text-sm mt-4 leading-relaxed">
+                保有資格：公認会計士・税理士<br>
+                公認会計士登録番号：42338<br>
+                税理士登録番号：158246<br>
+                対応エリア：全国対応（リモートメイン）
+              </p>
+            </div>
+            <div>
+              <p class="text-brand-gold font-sans tracking-widest text-sm mb-4 uppercase">Services</p>
+              <ul class="font-jp text-sm text-gray-300 space-y-3">
+                <li class="flex items-center gap-3"><i class="ph-fill ph-check-circle text-brand-gold"></i> 決算支援・内部統制支援</li>
+                <li class="flex items-center gap-3"><i class="ph-fill ph-check-circle text-brand-gold"></i> 会計監査補助・税務顧問</li>
+                <li class="flex items-center gap-3"><i class="ph-fill ph-check-circle text-brand-gold"></i> 税務申告・記帳代行</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAREER -->
+    <section id="career" class="py-24 bg-brand-surface border-t border-brand-border">
+      <div class="max-w-4xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="font-serif text-4xl text-brand-navy mb-2">Career</h2>
+          <h3 class="font-jp text-sm tracking-widest text-gray-500 uppercase">代表者 経歴</h3>
+        </div>
+        <div class="relative timeline-container p-4">
+          <div class="relative pl-12 py-6 group">
+            <div class="absolute left-3 top-[32px] w-2.5 h-2.5 bg-brand-gold rounded-full shadow-[0_0_0_4px_rgba(184,151,90,0.2)] transition-all group-hover:scale-150"></div>
+            <div class="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-8 mb-2">
+              <span class="font-sans font-semibold text-brand-navy text-base min-w-[180px]">2014年4月 〜 2017年3月</span>
+              <h4 class="font-jp font-bold text-gray-800 text-lg">滋賀県立八幡商業高等学校</h4>
+            </div>
+            <ul class="font-jp text-sm text-gray-600 mt-2 leading-relaxed list-disc list-inside space-y-1">
+              <li>商業科卒業</li>
+              <li>近江商人の士官学校にて「三方よし」の精神を学ぶ</li>
+            </ul>
+          </div>
+          <div class="relative pl-12 py-6 group">
+            <div class="absolute left-3 top-[32px] w-2.5 h-2.5 bg-white border-2 border-brand-gold rounded-full transition-all group-hover:bg-brand-gold"></div>
+            <div class="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-8 mb-2">
+              <span class="font-sans font-semibold text-brand-navy text-base min-w-[180px]">2017年4月 〜 2019年3月</span>
+              <h4 class="font-jp font-bold text-gray-800 text-lg">京都公務員＆IT会計専門学校</h4>
+            </div>
+            <ul class="font-jp text-sm text-gray-600 mt-2 leading-relaxed list-disc list-inside space-y-1">
               <li>会計士コース卒業</li>
               <li>20歳で公認会計士論文式試験に合格</li>
             </ul>
           </div>
-        </div>
-        <div class="career-item">
-          <div class="career-meta">
-            <p class="career-org">EY新日本有限責任監査法人</p>
-            <p class="career-period">2019年2月 〜 2025年9月</p>
-          </div>
-          <div class="career-detail">
-            <ul>
-              <li>監査業務</li>
+          <div class="relative pl-12 py-6 group">
+            <div class="absolute left-3 top-[32px] w-2.5 h-2.5 bg-white border-2 border-brand-gold rounded-full transition-all group-hover:bg-brand-gold"></div>
+            <div class="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-8 mb-2">
+              <span class="font-sans font-semibold text-brand-navy text-base min-w-[180px]">2019年2月 〜 2025年9月</span>
+              <h4 class="font-jp font-bold text-gray-800 text-lg">EY新日本有限責任監査法人</h4>
+            </div>
+            <ul class="font-jp text-sm text-gray-600 mt-2 leading-relaxed list-disc list-inside space-y-1">
+              <li>監査業務に従事</li>
             </ul>
           </div>
-        </div>
-        <div class="career-item">
-          <div class="career-meta">
-            <p class="career-org">髙本公認会計士事務所</p>
-            <p class="career-period">2025年10月 〜 現在</p>
-          </div>
-          <div class="career-detail">
-            <ul>
+          <div class="relative pl-12 py-6 group">
+            <div class="absolute left-3 top-[32px] w-3 h-3 bg-brand-navy border-2 border-brand-gold rounded-full z-10"></div>
+            <div class="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-8 mb-2">
+              <span class="font-sans font-semibold tracking-widest text-brand-gold text-base min-w-[180px]">2025年10月 〜 現在</span>
+              <h4 class="font-jp font-bold text-brand-navy text-lg">髙本会計事務所</h4>
+            </div>
+            <ul class="font-jp text-sm text-gray-600 mt-2 leading-relaxed list-disc list-inside space-y-1">
               <li>決算支援</li>
               <li>会計不正調査対応における会社サポート業務</li>
             </ul>
           </div>
-        </div>
-        <div class="career-item">
-          <div class="career-meta">
-            <p class="career-org">髙本和希税理士事務所</p>
-            <p class="career-period">2025年12月 〜 現在</p>
-          </div>
-          <div class="career-detail">
-            <ul>
-              <li>税務顧問（個人、法人）</li>
-              <li>税理士法人からの業務受託（個人、法人）</li>
+          <div class="relative pl-12 py-6 group">
+            <div class="absolute left-3 top-[32px] w-3 h-3 bg-brand-navy border-2 border-brand-gold rounded-full z-10"></div>
+            <div class="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-8 mb-2">
+              <span class="font-sans font-semibold tracking-widest text-brand-gold text-base min-w-[180px]">2025年12月 〜 現在</span>
+              <h4 class="font-jp font-bold text-brand-navy text-xl">髙本和希税理士事務所</h4>
+            </div>
+            <ul class="font-jp text-sm text-gray-600 mt-2 leading-relaxed list-disc list-inside space-y-1">
+              <li>税務顧問（個人・法人）</li>
+              <li>税理士法人からの業務受託（個人・法人）</li>
               <li>記帳代行</li>
             </ul>
           </div>
         </div>
       </div>
+    </section>
 
+    <!-- FIRM INFO / ACCESS -->
+    <section id="firm" class="py-24 bg-white">
+      <div class="max-w-4xl mx-auto px-6">
+        <div class="text-center mb-12">
+          <h2 class="font-serif text-4xl text-brand-navy mb-2">Access</h2>
+          <h3 class="font-jp text-sm tracking-widest text-gray-500 uppercase">アクセス</h3>
+        </div>
+        <div class="bg-white shadow-[0_0_30px_rgba(0,0,0,0.03)] border border-brand-border">
+          <table class="w-full text-left font-jp text-sm corporate-table">
+            <tbody>
+              <tr class="hover:bg-gray-50 transition-colors">
+                <th class="w-1/3 py-5 px-6 bg-brand-navy text-white font-medium">事務所名</th>
+                <td class="py-5 px-6 text-gray-800 font-bold">髙本会計事務所</td>
+              </tr>
+              <tr class="hover:bg-gray-50 transition-colors">
+                <th class="w-1/3 py-5 px-6 bg-brand-navy text-white font-medium">代表者</th>
+                <td class="py-5 px-6 text-gray-800">髙本 和希（たかもと かずき）</td>
+              </tr>
+              <tr class="hover:bg-gray-50 transition-colors">
+                <th class="w-1/3 py-5 px-6 bg-brand-navy text-white font-medium">対応エリア</th>
+                <td class="py-5 px-6 text-gray-800">全国対応（リモートメイン）</td>
+              </tr>
+              <tr class="hover:bg-gray-50 transition-colors">
+                <th class="w-1/3 py-5 px-6 bg-brand-navy text-white font-medium">お問い合わせ先</th>
+                <td class="py-5 px-6 text-gray-800">
+                  <a href="https://www.chatwork.com/KazukiTakamoto" target="_blank" rel="noopener" class="text-brand-navy hover:text-brand-gold transition-colors underline">Chatwork（KazukiTakamoto）</a><br>
+                  <a href="mailto:kazuki.takamoto0418@gmail.com" class="text-brand-navy hover:text-brand-gold transition-colors underline">kazuki.takamoto0418@gmail.com</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-24 bg-brand-dark border-t-4 border-brand-gold">
+      <div class="max-w-4xl mx-auto px-6 text-center">
+        <h2 class="font-serif text-5xl text-brand-gold mb-2">Contact</h2>
+        <h3 class="font-jp text-sm tracking-widest text-gray-400 uppercase mb-8">お問い合わせ</h3>
+        <p class="font-jp text-gray-300 leading-loose mb-10">
+          ご相談・お見積りは無料です。<br>
+          「税金のこと、どこに相談すればいいかわからない」<br>
+          そんな方もお気軽にどうぞ。
+        </p>
+        <a href="https://www.chatwork.com/KazukiTakamoto" target="_blank" rel="noopener"
+           class="inline-flex items-center gap-3 bg-brand-gold text-brand-navy font-bold font-jp px-10 py-5 rounded-[2px] hover:bg-white transition-all text-lg">
+          <i class="ph ph-chat-circle-text text-2xl"></i> Chatworkで相談する（KazukiTakamoto）
+        </a>
+        <p class="font-jp text-gray-500 text-sm mt-6">
+          またはメール:
+          <a href="mailto:kazuki.takamoto0418@gmail.com" class="text-brand-gold hover:underline">kazuki.takamoto0418@gmail.com</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-[#0b1727] text-gray-400 py-8 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+      <div class="flex items-center gap-2 font-sans text-white/80 tracking-widest">
+        <i class="ph-fill ph-calculator text-brand-gold"></i> Takamoto Accounting Office
+      </div>
+      <p class="font-sans text-xs tracking-widest uppercase">&copy; 2025 髙本会計事務所 All Rights Reserved.</p>
     </div>
-  </section>
-
-  <!-- INFO -->
-  <section id="info">
-    <div class="section-inner">
-      <p class="section-label">Access</p>
-      <h2 class="section-title">アクセス</h2>
-      <table class="info-table">
-        <tr>
-          <th>事務所名</th>
-          <td>髙本公認会計士事務所</td>
-        </tr>
-        <tr>
-          <th>代表者</th>
-          <td>髙本 和希（たかもと かずき）</td>
-        </tr>
-        <tr>
-          <th>対応エリア</th>
-          <td>全国対応（リモートメイン）</td>
-        </tr>
-        <tr>
-          <th>お問い合わせ先</th>
-          <td>
-            <a href="https://www.chatwork.com/KazukiTakamoto" target="_blank" rel="noopener">Chatwork（KazukiTakamoto）</a><br>
-            <a href="mailto:kazuki.takamoto0418@gmail.com">kazuki.takamoto0418@gmail.com</a>
-          </td>
-        </tr>
-      </table>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="section-inner">
-      <p class="section-label">Contact</p>
-      <h2 class="section-title">お問い合わせ</h2>
-      <p>ご相談・お見積りは無料です。<br>「税金のこと、どこに相談すればいいかわからない」<br>そんな方もお気軽にどうぞ。</p>
-      <a class="contact-mail" href="https://www.chatwork.com/KazukiTakamoto" target="_blank" rel="noopener">
-        Chatwork（KazukiTakamoto）
-      </a>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <p>&copy; 2025 髙本公認会計士事務所 All Rights Reserved.</p>
   </footer>
 
 </body>
